@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ-Exercises", "LINQ-Exercises\LINQ-Exercises.csproj", "{7BCA9DBE-E142-46C0-B0DF-189C6E301CDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ", "LINQ\LINQ.csproj", "{3ADD5EEE-1C15-489A-9F15-931E259ACD3C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3ADD5EEE-1C15-489A-9F15-931E259ACD3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ADD5EEE-1C15-489A-9F15-931E259ACD3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ADD5EEE-1C15-489A-9F15-931E259ACD3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ADD5EEE-1C15-489A-9F15-931E259ACD3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BCA9DBE-E142-46C0-B0DF-189C6E301CDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BCA9DBE-E142-46C0-B0DF-189C6E301CDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BCA9DBE-E142-46C0-B0DF-189C6E301CDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BCA9DBE-E142-46C0-B0DF-189C6E301CDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

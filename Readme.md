@@ -2,7 +2,7 @@
 
 This is LINQ training material for our Senior Software Engineers. 
 
-This tutorial is in form of Visual Studio solution. The best way to use this tutorial is to clone this repository and read the materials from your Visual Studio.
+This tutorial is in form of Visual Studio solution. The best way to use this tutorial is to clone this repository (or download zip) and read the materials from your Visual Studio.
 
 The texts and code-samples are in the form of unit test projects so you can run and test those as you read. 
 

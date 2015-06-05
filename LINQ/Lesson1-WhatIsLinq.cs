@@ -38,6 +38,7 @@
 //    7) Continuation and types of IE<T> vs. IQ<T> vs IO<T> vs ...
 //       - Continuation
 //       - Same LINQ, different monads
+//       - Entity Framework in brief
 //    8) Links
 //
 // But before that, first some implementation details of C#:

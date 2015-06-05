@@ -37,4 +37,5 @@ The structure of this tutorial:
 7. [Continuation and types of IE<T> vs. IQ<T> vs IO<T> vs ...](LINQ/Lesson7-Continuation.cs)
   - Continuation
   - Same LINQ, different monads
+  - Entity Framework in brief
 8. [Links](LINQ/Lesson8-Links.cs)

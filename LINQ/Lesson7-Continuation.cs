@@ -58,12 +58,12 @@ public class Lesson7_Part2
     // contexts (and you don't even know where you are):
 
     // IEnumerable<T> 
-    //        - Basic business logics with lists
+    //        - Basic business logics with lists (fixed to Microsoft IL)
     //        - Side-effect when exiting the monad: 
     //          Enumerates the lazy evaluations
 
     // IQueryable<T>:
-    //        - Databases
+    //        - Databases (and other sources: translatable expression trees)
     //        - Side-effect when exiting the monad: 
     //          Creates network traffic between Database and business logic
 
@@ -112,14 +112,44 @@ public class Lesson7_Part2
         var l = ie.ToList();
         var a = ie.ToArray();
 
-        // Use of IObservable would need Microsoft Reactive Framework (Rx):
+        // Use of IObservable would need a reference to Microsoft Reactive Extensions (Rx):
         // While the interface is in core .NET, the functionality comes as extension methods 
         // with this library.
         IObservable<int> io = null;
 
-        // Use of IQueryable covered more in EntityFramework... 
+        // Reactive Extensions (NuGet: Rx-Main) is a library for "LINQ to Events and async operations": 
+        // event-driven "reactive" programming. 
+
+        // Where normal list (IEnumerable) is pull based, IObservable is push based (infinite) list,
+        // like "a lazy list of mouse events": when an event happens, corresponding list gets a new value.
+        // If Nullable is just "a list of 0 or 1", then async-await could be just an IObservable of 0 or 1.
+
+        // There are many advantages using reactive programming and Rx:
+        //    + Manual thread/lock -handling can be avoided
+        //    + No temporary class variables to capture the current or some previous state 
+        //    + Testing is easy: just generate lists like they would be event-lists. 
+        //        + Testing wrong async event order is easy. 
+        //        + Also testing long-duration workflows is easy as you can "fake" time passing
+
+        // Example source code:
+        //    using System.Reactive.Linq; using System.Reactive.Subjects;
+        //    
+        //    var bus = new Subject<int>();
+        //    IObservable<int> interesting = 
+        //        bus.Where(i => i % 2 == 0); //LINQ to events. You can also merge multiple event/signal -streams.
+        //
+        //    interesting.Subscribe(onNext: Console.WriteLine); // onNext, onError, onCompleted
+        //
+        //    Enumerable.Range(1, 20).AsParallel().ForAll(i => bus.OnNext(i)); // Cause some events
+
+        // Use Rx when you need async events to communicate with each other, e.g.:
+        //    +  Events, WebServices, Threads, Timers, AutoComplete, Drag & Drop, ...
+
+        // But there are a lot of topics not covered here: 
+        // Hot & cold observables, Reactive vs. Actor/Agent -models, Functional Reactive Programming (FRP) in general, ...
     }
 }
+
 #endregion
 #region Entity Framework in brief
 

@@ -155,12 +155,11 @@ public class Lesson7_Part2
 
 // LINQ-command-expression-trees can be compiled to C# or whatever language.
 // The core idea of Entity Framework (EF) is to compile those to SQL.
-// So EF is not direct part of LINQ but just an application to use it.
+// So EF is not direct part of LINQ but just an "application" to use it.
 // There are also other alternatives to EF and OR-mapping in general
 // but there is no TypeProvider support in C# (yet?).
 
-// Example of "domain model" POCO object, for OR-mapping, won't have any logic.
-// They just model the data shape and can be in separate dll. 
+// Example of "domain model" POCO object, for OR-mapping (can locate in separate dll).
 // This example has the attributes disabled as EntityFramework (from NuGet) and 
 // System.ComponentModel.DataAnnotations.Schema are not referenced.
 //[Table("MyTable")]

@@ -219,6 +219,7 @@ public class Lesson3_Part3
 #endregion
 
 #region Closure: Capturing variables
+
 [TestClass]
 public class Lesson3_Part4
 {
@@ -256,5 +257,12 @@ public class Lesson3_Part4
         if(val!="hello") Console.WriteLine("Captured!");
         // In my machine: If "s" was captured then memory increase over +30, else under -20
     }
+
+    // From a lambda-point of view: x => { y + x } 
+    // here x is called "bound variable" and y is a "free variable" or a "captured closure".
+    // If you use free variables (defined outside the scope of the lambda) in your LINQ, 
+    // always check that they are immutable and will their use cause something extra
+    // e.g. memory consumption, or if y can be a function-call, y(), then this may cause 
+    // multiple execution (potential performance hit) and y shouldn't have side-effects.
 }
 #endregion

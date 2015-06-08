@@ -123,6 +123,12 @@ public class Lesson7_Part2
 #endregion
 #region Entity Framework in brief
 
+// LINQ-command-expression-trees can be compiled to C# or whatever language.
+// The core idea of Entity Framework (EF) is to compile those to SQL.
+// So EF is not direct part of LINQ but just an application to use it.
+// There are also other alternatives to EF and OR-mapping in general
+// but there is no TypeProvider support in C# (yet?).
+
 // Example of "domain model" POCO object, for OR-mapping, won't have any logic.
 // They just model the data shape and can be in separate dll. 
 // This example has the attributes disabled as EntityFramework (from NuGet) and 
@@ -138,15 +144,13 @@ public class MyObject
 [TestClass]
 public class Lesson7_Part3_EntityFramework
 {
-    // LINQ-command-expression-trees can be compiled to C# or what ever language.
-    // The core idea of Entity Framework (EF) is to compile those to SQL.
-
     // To be efficient, you should:
     //   - Avoid network traffic between business logics (BL) and database (DB).
     //     - When you exit the IQueryable-monad, you cause the traffic.
     //   - Model (multiple) small DbContext classes and entity objects. 
     //     - DBContext have 2 roles: "contain the data model" and "manage the connections"
     //     - Usually large means slow. Avoid opening multiple at once.
+    //     - Entity objects don't have to match the database table structures.
     //   - Disable entity tracking when possible. Use AddRange and RemoveRange.
     //     - Execute just once, and know when. Don't hammer the database.
     //   - Don't joining/grouping/unioning table to itself. Warning: Include() causes joins.
@@ -235,14 +239,6 @@ public class Lesson7_Part3_EntityFramework
                 from i in myObjects
                 select new { i.Id, Property = i.MyProperty * 2 };
     }
-
-    // From a lambda-point of view: x => { y + x } 
-    // here x is called "bound variable" and y is a "free variable" or a "captured closure".
-    // If you use free variables (defined outside the scope of the lambda) in your LINQ, 
-    // always check that they are immutable and will their use cause some extra execution
-    // (e.g. if y can be a function-call, y(), then this may cause multiple execution and 
-    //  y shouldn't have side-effects.)
-
 }
 
 // Unit-testing EF is possible. But EF won't support full LINQ so you may 
@@ -287,7 +283,7 @@ public static class Lesson7_Part3_Tests
 #endregion
 
 // So... LINQ can also be thought as a pipeline over (list) monad. Monad (term from 
-// Haskel programming language) means some kind of container holding some kind of state, 
+// Haskell programming language) means some kind of container holding some kind of state, 
 // that you as programmer can be unaware of (e.g. is your list in alphabetical order or not?).
 // This state will cause some kind of side effect that is caused when you exit the monad. 
 // The pipeline means that you can combine commands (by function composition): 
